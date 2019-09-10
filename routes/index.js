@@ -21,10 +21,6 @@ router.get("/", (req, res) => {
 })
 
 router.post("/", upload.single("upload"), (req, res) => {
-  console.log(req.file, req.body)
-  let fileName = req.body.fileName
-  let fileDesc = req.body.fileDesc
-  console.log(fileName + " & " + fileDesc)
   res.render("index")
 })
 
