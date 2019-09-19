@@ -3,11 +3,47 @@ body {
   background-color: #bdc3c7;
 }
 
-.wrapper {
+.pageChoice {
   position: absolute;
-  top: 50%;
+  z-index: 1;
+
+  top: 5%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+}
+
+.nav {
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #fff;
+  height: 30px;
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+.nav:hover {
+  opacity: 0.8;
+}
+
+.nav:active {
+  transform: scale(0.95);
+}
+
+.wrapper {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, 0%);
   background-color: #fff;
 
   -webkit-box-shadow: 7px 7px 15px 0px rgba(184, 184, 184, 1);
@@ -17,19 +53,41 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .downloadWrapper {
-  height: 600px;
+  height: auto;
   width: 500px;
   overflow: scroll;
-  padding: 10px;
+  padding: 20px;
 }
 
 .formWrapper {
   height: 260px;
-  width: 300px;
+  width: 400px;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  border-bottom: #bdc3c7 2px solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.container:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.container:active .right img {
+  height: 30px;
+}
+
+.name {
+  font-size: 22px;
 }
 
 form {
@@ -37,4 +95,5 @@ form {
   flex-direction: column;
   justify-content: space-evenly;
   height: 200px;
+  font-size: 22px;
 }

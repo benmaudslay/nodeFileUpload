@@ -1,8 +1,15 @@
 <div class="downloadWrapper wrapper">
   {{#each items}}
-  <p>
-    {{fileName}}
-    {{fileDesc}}
-  </p>
+  <div class="container" data-key={{@key}}>
+    <div class="left">
+      <div class="name">
+        {{fileName}}
+      </div>
+      <div class="desc">
+        {{fileDesc}}
+      </div>
+    </div>
+    <div class="right"><img src="download.svg" alt="↓"></div>
+  </div>
   {{/each}}
 </div>

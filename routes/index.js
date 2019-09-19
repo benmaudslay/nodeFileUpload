@@ -13,7 +13,8 @@ let storage = multer.diskStorage({
     cb(null, "./uploads")
   },
   filename: (req, file, cb) => {
-    cb(null, req.body.fileName + "." + mime.extension(file.mimetype))
+    // cb(null, req.body.fileName + "." + mime.extension(file.mimetype))
+    cb(null, req.body.fileName)
   }
 })
 
@@ -27,12 +28,12 @@ router.get("/download", async (req, res) => {
   let data = await readStore("store.json")
   let table = JSON.parse(data)
   let items = table.table
-  console.log(items)
   res.render("download", { items })
 })
 
 router.post("/", upload.single("upload"), (req, res) => {
   // fs.appendFile("store.json", req.body.fileName, err => err && console.log(err))
+  console.log()
   let obj = { fileName: req.body.fileName, fileDesc: req.body.fileDesc }
   fs.readFile("store.json", (err, data) => {
     if (err) {
@@ -46,6 +47,29 @@ router.post("/", upload.single("upload"), (req, res) => {
     }
   })
   res.render("index")
+})
+
+router.post("/getDownload", (req, res) => {
+  // console.log(req.body)
+
+  fs.readFile("store.json", (err, data) => {
+    if (err) {
+      console.log(err)
+    } else {
+      let store = JSON.parse(data)
+      let file = store.table[req.body.value].fileName
+
+      fs.readFile(`./uploads/${file}`, (err, data) => {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log("hi")
+        }
+      })
+    }
+  })
+
+  res.send({ data: "Response", id: req.body })
 })
 
 module.exports = router
